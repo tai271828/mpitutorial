@@ -110,15 +110,16 @@ int main(int argc, char** argv) {
   domain_size = atoi(argv[1]);
   max_walk_size = atoi(argv[2]);
   num_walkers_per_proc = atoi(argv[3]);
-  cout << "Domain size: " << domain_size << endl;
-  cout << "Max walk size: " << max_walk_size << endl;
-  cout << "Num walkers per proc: " << num_walkers_per_proc << endl;
 
   MPI_Init(NULL, NULL);
   int world_size;
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
   int world_rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+  cout << "RANK: " << world_rank << endl;
+  cout << "Domain size: " << domain_size << endl;
+  cout << "Max walk size: " << max_walk_size << endl;
+  cout << "Num walkers per proc: " << num_walkers_per_proc << endl << endl;
 
   srand(time(NULL) * world_rank);
   int subdomain_start, subdomain_size;
